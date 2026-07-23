@@ -373,11 +373,37 @@
     }
 
     .role {
+      position: relative;
       display: grid;
-      grid-template-columns: 220px 1fr;
+      grid-template-columns: 192px 1fr;
       gap: 46px;
-      padding: 56px 0;
+      padding: 56px 0 56px 28px;
       border-top: 1px solid var(--line);
+    }
+
+    .role::before {
+      content: "";
+      position: absolute;
+      left: 4px;
+      top: 63px;
+      bottom: -57px;
+      width: 1px;
+      background: var(--line);
+    }
+
+    .role:last-child::before { bottom: 56px; }
+
+    .role::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 59px;
+      width: 9px;
+      height: 9px;
+      border: 2px solid var(--surface);
+      border-radius: 50%;
+      background: var(--coral);
+      box-shadow: 0 0 0 1px var(--coral);
     }
 
     .role-meta { color: var(--muted); }
@@ -434,6 +460,11 @@
       width: 8px;
       height: 8px;
       background: var(--yellow);
+    }
+
+    .role .achievements strong {
+      color: var(--ink);
+      font-weight: 800;
     }
 
     .project-feature {
@@ -594,6 +625,7 @@
       .hero-inner { gap: 56px; padding-top: 64px; }
       .section-header,
       .role { grid-template-columns: 1fr; gap: 22px; }
+      .role { padding-left: 28px; }
       .impact-grid { grid-template-columns: 1fr 1fr; }
       .expertise-grid { grid-template-columns: 1fr 1fr; }
       .project-visual { min-height: 360px; }
@@ -662,7 +694,10 @@
       .expertise-item { min-height: auto; padding: 3.5mm; break-inside: avoid-page; }
       .expertise-number { margin-bottom: 2mm; }
       .expertise-item h3 { margin-bottom: 1.5mm; }
-      .role { display: block; padding: 5mm 0; break-inside: auto; }
+      .role { display: block; padding: 5mm 0 5mm 4mm; break-inside: auto; }
+      .role::before { top: 6mm; bottom: -6mm; }
+      .role:last-child::before { bottom: 5mm; }
+      .role::after { top: 5.2mm; }
       .role-meta {
         display: flex;
         justify-content: space-between;
@@ -781,38 +816,23 @@
       <div class="expertise-grid reveal">
         <article class="expertise-item">
           <span class="expertise-number">01</span>
-          <h3>AI Engineering</h3>
-          <p>GitHub Copilot agents, skills, custom instructions, Model Context Protocol, AI-assisted development, PRD-driven code generation</p>
+          <h3>AI Engineering &amp; Enablement</h3>
+          <p>GitHub Copilot custom agents, skills, prompts, and custom instructions; Model Context Protocol (MCP), AI-assisted development, and PRD-driven code generation</p>
         </article>
         <article class="expertise-item">
           <span class="expertise-number">02</span>
-          <h3>Identity, Access &amp; Federation</h3>
-          <p>Directory Services (Active Directory, Micro Focus / NetIQ eDirectory, LDAP), CA SiteMinder, SCIM provisioning, RBAC, privileged access management, SAML 2.0, OpenSAML, Shibboleth IdP/SP, OAuth 2.0, OpenID Connect, JWT, MFA (Gemalto smartcard, OTP/TOTP), Kerberos, NTLM</p>
+          <h3>IAM, Federation &amp; Security Engineering</h3>
+          <p>Active Directory, Micro Focus / NetIQ eDirectory, LDAPv3, ODSEE; CA SiteMinder, SAML 2.0, OpenSAML, Shibboleth IdP/SP, OAuth 2.0, OIDC, JWT; SCIM, RBAC, OPA, PAM, MFA, Gemalto smartcard, OTP/TOTP, Kerberos, NTLM; PKI, SSL/TLS, OpenSSL, HashiCorp Vault; Secure SDLC, OWASP, DevSecOps, Fortify, SonarQube, Snyk, BlackDuck, and Yelp detect-secrets</p>
         </article>
         <article class="expertise-item">
           <span class="expertise-number">03</span>
-          <h3>Security Engineering</h3>
-          <p>PKI, SSL/TLS, OpenSSL, HashiCorp Vault, OPA, Secure SDLC, OWASP, DevSecOps, SAST (Fortify, SonarQube), SCA / dependency &amp; secrets scanning (Snyk, BlackDuck)</p>
+          <h3>Cloud, DevOps, Observability &amp; Testing</h3>
+          <p>Kubernetes, Cloud Foundry, Docker, Jenkins CI/CD, Git, Bitbucket; Splunk, Prometheus, Grafana, Kafka, Redis, MySQL/MariaDB; Locust, JMeter, SLAMD, Postman, and SoapUI</p>
         </article>
         <article class="expertise-item">
           <span class="expertise-number">04</span>
-          <h3>Cloud &amp; DevOps</h3>
-          <p>Kubernetes, Cloud Foundry, Docker, Jenkins CI/CD, Git, Bitbucket, ServiceNow integration, load balancer orchestration</p>
-        </article>
-        <article class="expertise-item">
-          <span class="expertise-number">05</span>
-          <h3>Software Engineering</h3>
-          <p>React, Angular, TypeScript, Python, Django REST Framework, Node.js, PowerShell, Bash/Shell scripting, Java, Spring Boot, Spring Security, Spring LDAP, REST/SOAP APIs, microservices</p>
-        </article>
-        <article class="expertise-item">
-          <span class="expertise-number">06</span>
-          <h3>Monitoring, Data &amp; Testing</h3>
-          <p>Splunk, Prometheus, Grafana, Kafka, Redis, MySQL/MariaDB, Locust, JMeter, SLAMD, Postman, SoapUI</p>
-        </article>
-        <article class="expertise-item">
-          <span class="expertise-number">07</span>
-          <h3>Platforms &amp; OS</h3>
-          <p>Windows Server, Linux (RHEL)</p>
+          <h3>Software Engineering &amp; Automation</h3>
+          <p>Python, TypeScript, Java, PowerShell, Bash/Shell; React; Node.js, Django, Django REST Framework, FastAPI, Spring Boot, Spring Security, Spring LDAP; REST/SOAP APIs, microservices, bespoke and Temporal durable-execution workflows; Windows Server and Linux (RHEL)</p>
         </article>
       </div>
     </section>
@@ -825,26 +845,45 @@
       <div class="experience-list">
         <article class="role reveal">
           <div class="role-meta">
-            <span class="period">MAR 2018 — PRESENT</span>
+            <span class="period">AUG 2020 — PRESENT</span>
             <div class="location">Singapore</div>
           </div>
           <div>
             <h3>JPMorgan Chase</h3>
-            <p class="role-title">Senior Associate | Chief Technology Office (CTO), Identity &amp; Access Management</p>
-            <p class="role-intro">Lead engineer in a globally distributed IAM team, owning automation, cloud migration, security engineering, and AI-driven tooling for enterprise Directory infrastructure.</p>
+            <p class="role-title">Senior Associate | Directory Services Engineering</p>
+            <p class="role-intro">Chief Technology Office (CTO), Identity &amp; Access Management. Lead engineer in a globally distributed IAM team, owning automation, cloud migration, security engineering, and AI-driven tooling for enterprise Active Directory infrastructure.</p>
             <ul class="achievements">
-              <li>Enabled and championed the team's AI-driven engineering adoption from the ground up — built a shared GitHub Copilot enablement repository with custom agents, skills, instruction files, and an indexed component library that makes Copilot aware of the internal React design-system framework, enabling every team member to generate standards-compliant UI and code automatically; presented to a global engineering audience and mentored teams across the firm on GitHub Copilot custom agents and self-developed MCP servers exposed over Streamable HTTP.</li>
-              <li>Delivered a cloud-native identity platform for Microsoft Entra ID provisioning and SAML 2.0 testing, using AI-assisted development and Kubernetes deployment patterns.</li>
-              <li>Architected and rebuilt a full-stack infrastructure automation platform (React, Python/Django REST APIs, and multithreaded worker services) that automates the end-to-end lifecycle of Directory domain controllers — designing workflows to orchestrate the full demote → OS rebuild → promote sequence with near-zero manual intervention; delivered 1,000+ OS rebuilds, 700+ new builds, and 300+ decommissions in production.</li>
-              <li>Led migration from Cloud Foundry to Kubernetes across multiple APIs and portals, adopting containerization, ingress load balancing, Prometheus metrics, HashiCorp Vault, and runtime upgrades across Node.js, Python, and Django.</li>
-              <li>Designed durable-execution workflow automation with auto-retry, persisted state, validation gates, failover workers, ServiceNow change integration, load balancer orchestration, and certificate lifecycle automation.</li>
-              <li>Built Synthetic Transaction Probes across nearly all Directory domains for proactive availability and health monitoring, streaming telemetry onto Kafka for high-throughput processing; delivered a region-based rollout (including China infrastructure) tuned to minimize load on domain controllers.</li>
-              <li>Built a config-driven Group Policy (GPO) deployment and lifecycle-automation platform (PowerShell + Python) that safely applies GPO add, update, and link changes to production Primary Domain Controllers across the global Directory estate — NA, EMEA, APAC, and the regulatorily isolated China environment — via CI/CD pipelines and configuration management; performs pre-deployment health checks, automatic GPO backup, and post-change AD/SYSVOL version and replication verification, with multi-approver PR gating and integrated security scanning (SonarQube, SAST), eliminating privileged break-glass access and manual file transfers.</li>
-              <li>Owned enterprise inventory and identity APIs meeting the firm's highest internal API-quality standard, including SCIM provisioning, automated credential rotation, OPA authorization, and Locust performance/load testing.</li>
-              <li>Standardized CI/CD and DevSecOps practices, automated SDLC audit-evidence generation for Python services, and drove continuous vulnerability remediation across SAST (Fortify, SonarQube), SCA / open-source dependency scanning (Snyk, BlackDuck), and secrets scanning — including log4j RCE response and DOM/XSS fixes — and led source-control consolidation from 133 to 44 repositories that raised the team's engineering-health score to 100%.</li>
-              <li>Migrated the platforms' secrets integration from CyberArk to HashiCorp Vault — closing a regulatory audit finding ahead of the mandated deadline — and built a reusable integration code base and standardized patterns adopted by other teams.</li>
-              <li>Engineered a production-grade, reusable PowerShell module that authenticates to an ADFS/OAuth2-protected HashiCorp Vault (KV v2) using gMSA-based Integrated Windows Authentication (Kerberos) and JWT token exchange — featuring metadata-driven configuration, TTL-based performance caching, and in-memory-only secret handling — enabling passwordless, credential-free secret retrieval for scheduled tasks and service automation across Windows Server.</li>
-              <li>Served as APAC SME/SPOC for the enterprise directory platform, leading install automation, monitoring, Splunk-based anomaly detection, operational dashboards, and high-severity incident response.</li>
+              <li><strong>AI engineering enablement:</strong> Built a shared GitHub Copilot enablement repository — custom agents, skills, instruction files, and an indexed component library that makes Copilot aware of the internal React design-system framework — enabling every team member to generate standards-compliant UI and code automatically; presented to a global engineering audience and mentored teams firm-wide on custom Copilot agents and self-developed MCP servers exposed over Streamable HTTP.</li>
+              <li><strong>Cloud-native identity platform:</strong> Delivered a Microsoft Entra ID provisioning and SAML 2.0 testing platform using AI-assisted development and Kubernetes deployment patterns.</li>
+              <li><strong>Domain-controller lifecycle automation:</strong> Architected and rebuilt a full-stack infrastructure automation platform (React, Python/Django REST APIs, and multithreaded worker services) that automates the end-to-end lifecycle of Directory domain controllers — designing workflows to orchestrate the full demote → OS rebuild → promote sequence with near-zero manual intervention; delivered 1,000+ OS rebuilds, 700+ new builds, and 300+ decommissions in production.</li>
+              <li><strong>Cloud migration:</strong> Led migration from Cloud Foundry to Kubernetes across multiple APIs and portals, adopting containerization, ingress load balancing, Prometheus metrics, HashiCorp Vault, and runtime upgrades across Node.js, Python, and Django.</li>
+              <li><strong>Durable-execution workflows:</strong> Designed workflow automation with auto-retry, persisted state, validation gates, failover workers, ServiceNow change integration, load balancer orchestration, and certificate lifecycle automation.</li>
+              <li><strong>Proactive availability monitoring:</strong> Built Synthetic Transaction Probes across nearly all Directory domains, streaming telemetry onto Kafka for high-throughput processing; delivered a region-based rollout (including China infrastructure) tuned to minimize load on domain controllers.</li>
+              <li><strong>Zero-touch GPO deployment:</strong> Built a config-driven Group Policy platform (PowerShell + Python) that safely applies GPO add, update, and link changes to production Primary Domain Controllers across the global Directory estate — NA, EMEA, APAC, and the regulatorily isolated China environment — via CI/CD pipelines and configuration management; performs pre-deployment health checks, automatic GPO backup, and post-change AD/SYSVOL version and replication verification, with multi-approver PR gating and integrated security scanning (SonarQube, SAST), eliminating privileged break-glass access and manual file transfers.</li>
+              <li><strong>Enterprise identity APIs:</strong> Owned enterprise inventory and identity APIs meeting the firm's highest internal API-quality standard, including SCIM provisioning, automated credential rotation, OPA authorization, and Locust performance/load testing.</li>
+              <li><strong>DevSecOps standardization:</strong> Standardized CI/CD and DevSecOps practices, automated SDLC audit-evidence generation for Python services, and drove continuous vulnerability remediation across SAST (Fortify, SonarQube), SCA / open-source dependency scanning (Snyk, BlackDuck), and secrets scanning — including log4j RCE response and DOM/XSS fixes — and led source-control consolidation from 133 to 44 repositories that raised the team's engineering-health score to 100%.</li>
+              <li><strong>Secrets modernization:</strong> Migrated the platforms' secrets integration from CyberArk to HashiCorp Vault — closing a regulatory audit finding ahead of the mandated deadline — and built a reusable integration code base and standardized patterns adopted by other teams.</li>
+              <li><strong>Passwordless secret automation:</strong> Engineered a production-grade, reusable PowerShell module that authenticates to an ADFS/OAuth2-protected HashiCorp Vault (KV v2) using gMSA-based Integrated Windows Authentication (Kerberos) and JWT token exchange — featuring metadata-driven configuration, TTL-based performance caching, and in-memory-only secret handling — enabling passwordless, credential-free secret retrieval for scheduled tasks and service automation across Windows Server.</li>
+              <li><strong>Operational excellence:</strong> Led install automation, monitoring, Splunk-based anomaly detection, operational dashboards, and high-severity incident response for the enterprise Active Directory platform.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="role reveal">
+          <div class="role-meta">
+            <span class="period">MAR 2018 — JUL 2020</span>
+            <div class="location">Singapore<br>APAC</div>
+          </div>
+          <div>
+            <h3>JPMorgan Chase</h3>
+            <p class="role-title">Senior Associate | eDirectory Engineering — APAC</p>
+            <p class="role-intro">SME for Micro Focus / NetIQ eDirectory across APAC, owning automation, monitoring, audit, and incident response for directory services.</p>
+            <ul class="achievements">
+              <li><strong>APAC SME / SPOC:</strong> Served as the single point of contact for eDirectory across APAC; defined and monitored security baselines and acted as a center of excellence for directory-services integration and best practices.</li>
+              <li><strong>End-to-end automation:</strong> Automated installation, configuration, and monitoring, including one-touch monitoring component setup and automated blackout, downtime, and ticketing workflows.</li>
+              <li><strong>Monitoring &amp; analytics:</strong> Built Nagios Core host and service monitoring and Splunk reporting dashboards, including LDAP-anomaly-based DDoS detection and alerting.</li>
+              <li><strong>Custom LDAP tooling:</strong> Developed object monitors and LDAP sync and aggregation drivers using Shell, Python, and Perl to satisfy audit requirements; coordinated audits and led high-severity incident response and root-cause analysis.</li>
+              <li><strong>Directory-usage portal:</strong> Architected a self-service portal using Angular 9 and Spring Boot microservices, deployed through CI/CD to track directory-services consumption by team.</li>
             </ul>
           </div>
         </article>
@@ -859,14 +898,14 @@
             <p class="role-title">IAM / Application Security Consultant &amp; Engineer</p>
             <p class="role-intro">Delivered identity, federation, secure-access, and application-security solutions for global banking and enterprise clients across multiple regions.</p>
             <ul class="achievements">
-              <li>Acted as center-of-excellence advisor for web application security, authentication, authorization, SSO, entitlements, directory services, and federation services.</li>
-              <li>Ran security-service roadshows with senior stakeholders and supported product evaluations, POCs, RFPs, roadmap planning, architecture reviews, and OWASP secure-coding enablement.</li>
-              <li>Delivered 10+ third-party SAML federation integrations and multiple LDAP integrations for enterprise application teams.</li>
-              <li>Owned legacy-to-strategic migration initiatives end-to-end, including Oracle Internet Directory to ODSEE migration planning and delivery.</li>
-              <li>Implemented smartcard-based authentication for critical applications and defined, implemented, and monitored security baselines.</li>
-              <li>Built cross-domain SSO using OpenSAML 2.0 and Oracle Access Manager SDK, including custom SAML assertion generation.</li>
-              <li>Developed CA SiteMinder SDK-based Enterprise Security Services, including SOAP services for LDAP CRUD, password self-service, and token-exchange SSO.</li>
-              <li>Developed a MaxMind GeoIP-based fraud-prevention module using Device DNA hashing from user IP, user-agent, and location to detect anomalous logins.</li>
+              <li><strong>Security center of excellence:</strong> Acted as advisor for web application security, authentication, authorization, SSO, entitlements, directory services, and federation services.</li>
+              <li><strong>Integration advisory:</strong> Ran security-service roadshows with senior stakeholders and supported product evaluations, POCs, RFPs, roadmap planning, architecture reviews, and OWASP secure-coding enablement.</li>
+              <li><strong>Federation &amp; directory integrations:</strong> Delivered 10+ third-party SAML federation integrations and multiple LDAP integrations for enterprise application teams.</li>
+              <li><strong>Directory migration:</strong> Owned legacy-to-strategic migration initiatives end-to-end, including Oracle Internet Directory to ODSEE migration planning and delivery.</li>
+              <li><strong>Smartcard authentication:</strong> Implemented smartcard-based authentication for critical applications and defined, implemented, and monitored security baselines.</li>
+              <li><strong>Cross-domain SSO:</strong> Built cross-domain SSO using OpenSAML 2.0 and Oracle Access Manager SDK, including custom SAML assertion generation.</li>
+              <li><strong>Enterprise Security Services:</strong> Developed CA SiteMinder SDK-based SOAP services for LDAP CRUD, password self-service, and token-exchange SSO.</li>
+              <li><strong>Fraud prevention:</strong> Developed a MaxMind GeoIP-based module using Device DNA hashing from user IP, user-agent, and location to detect anomalous logins.</li>
             </ul>
           </div>
         </article>
