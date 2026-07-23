@@ -13,7 +13,7 @@
   <style>
     :root {
       --ink: #17211d;
-      --muted: #5f6964;
+      --muted: #4c5551;
       --paper: #f4f1ea;
       --surface: #fffdf8;
       --line: #d8d5cc;
@@ -40,7 +40,10 @@
         linear-gradient(90deg, rgba(23, 77, 59, 0.045) 1px, transparent 1px);
       background-size: 28px 28px;
       font-family: "Manrope", sans-serif;
-      line-height: 1.65;
+      font-size: 17.5px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
     a { color: inherit; }
@@ -224,6 +227,33 @@
       font-weight: 600;
     }
 
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px 0;
+      margin-top: 24px;
+    }
+
+    .hero-tags .tag {
+      display: inline-flex;
+      align-items: center;
+      color: var(--forest);
+      font-family: "Manrope", sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .hero-tags .tag:not(:last-child)::after {
+      content: "";
+      width: 7px;
+      height: 7px;
+      margin: 0 15px;
+      border-radius: 50%;
+      background: var(--coral);
+    }
+
     .hero-aside {
       border-top: 5px solid var(--yellow);
       padding-top: 24px;
@@ -232,7 +262,7 @@
     .hero-aside p {
       margin: 0 0 28px;
       color: var(--muted);
-      font-size: 15px;
+      font-size: 17px;
     }
 
     .contact-list {
@@ -248,7 +278,7 @@
       padding: 8px 0;
       border-bottom: 1px solid var(--line);
       text-decoration: none;
-      font-size: 14px;
+      font-size: 16px;
       overflow-wrap: anywhere;
     }
 
@@ -348,14 +378,15 @@
 
     .expertise-item h3 {
       margin: 0 0 15px;
-      font-size: 20px;
+      font-size: 22px;
       line-height: 1.25;
     }
 
     .expertise-item p {
       margin: 0;
       color: var(--muted);
-      font-size: 14px;
+      font-size: 16px;
+      line-height: 1.6;
     }
 
     .experience-section {
@@ -417,7 +448,7 @@
     }
 
     .location {
-      font-size: 13px;
+      font-size: 14px;
       line-height: 1.5;
     }
 
@@ -439,12 +470,48 @@
       font-size: 17px;
     }
 
+    .role-project + .role-project {
+      margin-top: 34px;
+      padding-top: 30px;
+      border-top: 1px dashed var(--line);
+    }
+
+    .role-project-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px 20px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .role-project-title {
+      margin: 0;
+      color: var(--forest);
+      font-size: 22px;
+      line-height: 1.25;
+    }
+
+    .role-project-period {
+      color: var(--coral);
+      font: 500 12px "DM Mono", monospace;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .role-project .role-intro {
+      margin-bottom: 22px;
+      font-size: 17px;
+    }
+
     .achievements {
       margin: 0;
       padding: 0;
       list-style: none;
       display: grid;
       gap: 16px;
+      font-size: 17px;
+      line-height: 1.62;
     }
 
     .achievements li {
@@ -462,7 +529,8 @@
       background: var(--yellow);
     }
 
-    .role .achievements strong {
+    .role .achievements strong,
+    #summary .achievements strong {
       color: var(--ink);
       font-weight: 800;
     }
@@ -478,12 +546,48 @@
     .project-copy { padding: clamp(30px, 5vw, 66px); }
 
     .project-copy h3 {
-      margin: 0 0 20px;
+      margin: 0 0 16px;
       font-size: clamp(36px, 5vw, 64px);
       line-height: 1;
     }
 
+    .project-tagline {
+      margin: 0 0 24px;
+      color: var(--yellow);
+      font-size: clamp(17px, 1.9vw, 22px);
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
     .project-copy p { color: #cbd3cf; }
+
+    .project-points {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 14px;
+      color: #cbd3cf;
+    }
+
+    .project-points li {
+      position: relative;
+      padding-left: 22px;
+      font-size: 17px;
+      line-height: 1.55;
+    }
+
+    .project-points li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.6em;
+      width: 8px;
+      height: 8px;
+      background: var(--yellow);
+    }
+
+    .project-points strong { color: #fff; font-weight: 700; }
 
     .project-link {
       display: inline-flex;
@@ -677,6 +781,15 @@
       .eyebrow { margin-bottom: 4mm; }
       h1 { font-size: 31pt; }
       .hero-title { margin-top: 4mm; font-size: 12pt; }
+      .hero-tags { gap: 1.5mm 0; margin-top: 2.5mm; }
+      .hero-tags .tag {
+        font-size: 8.5pt;
+      }
+      .hero-tags .tag:not(:last-child)::after {
+        width: 1.5mm;
+        height: 1.5mm;
+        margin: 0 2.5mm;
+      }
       .hero-aside { margin: 0; padding-top: 3mm; }
       .contact-list { grid-template-columns: 1fr; gap: 0; }
       .contact-link { min-height: auto; padding: 1.2mm 0; font-size: 8pt; }
@@ -773,7 +886,12 @@
         <div>
           <p class="eyebrow">Singapore</p>
           <h1>Rajesh<br>Thyagarajan</h1>
-          <p class="hero-title">Senior IAM &amp; Automation Engineer | Identity &amp; Access Management | Engineering Automation | AI-Driven Development</p>
+          <p class="hero-title">Senior IAM &amp; Automation Engineer</p>
+          <div class="hero-tags">
+            <span class="tag">Identity &amp; Access Management</span>
+            <span class="tag">Engineering Automation</span>
+            <span class="tag">AI-Driven Development</span>
+          </div>
         </div>
         <aside class="hero-aside" aria-label="Profile and contact information">
           <div class="contact-list">
@@ -800,11 +918,11 @@
         <h2 id="summary-title">Professional Summary</h2>
       </div>
       <ul class="achievements reveal">
-        <li>Senior IAM, automation, and security engineer with more than 19 years of experience, including over eight years at JPMorgan Chase. Engineered automation, cloud, and AI capabilities supporting the bank's global Directory and Identity &amp; Access Management infrastructure.</li>
-        <li>Deep IAM and security expertise across Directory services, LDAP, SAML/federation, OAuth 2.0/OIDC, SCIM provisioning, PKI, RBAC, MFA, and Secure SDLC / OWASP practices.</li>
-        <li>AI-driven engineering enablement specialist — built reusable GitHub Copilot agents, skills, and Model Context Protocol tooling that helps teams generate standards-compliant code faster and measurably accelerate delivery.</li>
-        <li>Full-stack (React, Angular, Python/Django, Node.js, Java/Spring) and cloud-native (Kubernetes, Cloud Foundry) engineer with proven large-scale automation — 1,000+ automated domain-controller lifecycle operations in production.</li>
-        <li>Trusted technical advisor and SME across AMER, EMEA, and APAC, and a consistent early adopter who pioneers new capabilities — Kubernetes, CI/CD, and Copilot agents — and scales them across the team.</li>
+        <li><strong>Senior IAM &amp; automation engineer:</strong> 19+ years of experience, including 8+ years at JPMorgan Chase, delivering automation, cloud, and AI capabilities for the bank's global Directory and Identity &amp; Access Management infrastructure.</li>
+        <li><strong>Deep IAM &amp; security expertise:</strong> Directory services, LDAP, SAML/federation, OAuth 2.0/OIDC, SCIM provisioning, PKI, RBAC, MFA, and Secure SDLC / OWASP practices.</li>
+        <li><strong>AI engineering enablement:</strong> Built reusable GitHub Copilot agents, skills, and Model Context Protocol tooling that help teams generate standards-compliant code faster and accelerate delivery.</li>
+        <li><strong>Full-stack &amp; cloud-native:</strong> React, Angular, Python/Django, Node.js, and Java/Spring on Kubernetes and Cloud Foundry, with proven large-scale automation — 1,000+ domain-controller lifecycle operations in production.</li>
+        <li><strong>Trusted technical advisor:</strong> SME across AMER, EMEA, and APAC, and an early adopter who pioneers new capabilities — Kubernetes, CI/CD, and Copilot agents — and scales them across the team.</li>
       </ul>
     </section>
 
@@ -845,14 +963,20 @@
       <div class="experience-list">
         <article class="role reveal">
           <div class="role-meta">
-            <span class="period">AUG 2020 — PRESENT</span>
+            <span class="period">MAR 2018 — PRESENT</span>
             <div class="location">Singapore</div>
           </div>
           <div>
             <h3>JPMorgan Chase</h3>
-            <p class="role-title">Senior Associate | Directory Services Engineering</p>
-            <p class="role-intro">Chief Technology Office (CTO), Identity &amp; Access Management. Lead engineer in a globally distributed IAM team, owning automation, cloud migration, security engineering, and AI-driven tooling for enterprise Active Directory infrastructure.</p>
-            <ul class="achievements">
+            <p class="role-title">Senior Associate | Chief Technology Office (CTO), Identity &amp; Access Management</p>
+
+            <div class="role-project">
+              <div class="role-project-head">
+                <h4 class="role-project-title">Directory Services Engineering</h4>
+                <span class="role-project-period">AUG 2020 — PRESENT</span>
+              </div>
+              <p class="role-intro">Lead engineer in a globally distributed IAM team, owning automation, cloud migration, security engineering, and AI-driven tooling for enterprise Active Directory infrastructure.</p>
+              <ul class="achievements">
               <li><strong>AI engineering enablement:</strong> Built a shared GitHub Copilot enablement repository — custom agents, skills, instruction files, and an indexed component library that makes Copilot aware of the internal React design-system framework — enabling every team member to generate standards-compliant UI and code automatically; presented to a global engineering audience and mentored teams firm-wide on custom Copilot agents and self-developed MCP servers exposed over Streamable HTTP.</li>
               <li><strong>Cloud-native identity platform:</strong> Delivered a Microsoft Entra ID provisioning and SAML 2.0 testing platform using AI-assisted development and Kubernetes deployment patterns.</li>
               <li><strong>Domain-controller lifecycle automation:</strong> Architected and rebuilt a full-stack infrastructure automation platform (React, Python/Django REST APIs, and multithreaded worker services) that automates the end-to-end lifecycle of Directory domain controllers — designing workflows to orchestrate the full demote → OS rebuild → promote sequence with near-zero manual intervention; delivered 1,000+ OS rebuilds, 700+ new builds, and 300+ decommissions in production.</li>
@@ -865,26 +989,23 @@
               <li><strong>Secrets modernization:</strong> Migrated the platforms' secrets integration from CyberArk to HashiCorp Vault — closing a regulatory audit finding ahead of the mandated deadline — and built a reusable integration code base and standardized patterns adopted by other teams.</li>
               <li><strong>Passwordless secret automation:</strong> Engineered a production-grade, reusable PowerShell module that authenticates to an ADFS/OAuth2-protected HashiCorp Vault (KV v2) using gMSA-based Integrated Windows Authentication (Kerberos) and JWT token exchange — featuring metadata-driven configuration, TTL-based performance caching, and in-memory-only secret handling — enabling passwordless, credential-free secret retrieval for scheduled tasks and service automation across Windows Server.</li>
               <li><strong>Operational excellence:</strong> Led install automation, monitoring, Splunk-based anomaly detection, operational dashboards, and high-severity incident response for the enterprise Active Directory platform.</li>
-            </ul>
-          </div>
-        </article>
+              </ul>
+            </div>
 
-        <article class="role reveal">
-          <div class="role-meta">
-            <span class="period">MAR 2018 — JUL 2020</span>
-            <div class="location">Singapore<br>APAC</div>
-          </div>
-          <div>
-            <h3>JPMorgan Chase</h3>
-            <p class="role-title">Senior Associate | eDirectory Engineering — APAC</p>
-            <p class="role-intro">SME for Micro Focus / NetIQ eDirectory across APAC, owning automation, monitoring, audit, and incident response for directory services.</p>
-            <ul class="achievements">
+            <div class="role-project">
+              <div class="role-project-head">
+                <h4 class="role-project-title">eDirectory Engineering — APAC</h4>
+                <span class="role-project-period">MAR 2018 — JUL 2020</span>
+              </div>
+              <p class="role-intro">SME for Micro Focus / NetIQ eDirectory across APAC, owning automation, monitoring, audit, and incident response for directory services.</p>
+              <ul class="achievements">
               <li><strong>APAC SME / SPOC:</strong> Served as the single point of contact for eDirectory across APAC; defined and monitored security baselines and acted as a center of excellence for directory-services integration and best practices.</li>
               <li><strong>End-to-end automation:</strong> Automated installation, configuration, and monitoring, including one-touch monitoring component setup and automated blackout, downtime, and ticketing workflows.</li>
               <li><strong>Monitoring &amp; analytics:</strong> Built Nagios Core host and service monitoring and Splunk reporting dashboards, including LDAP-anomaly-based DDoS detection and alerting.</li>
               <li><strong>Custom LDAP tooling:</strong> Developed object monitors and LDAP sync and aggregation drivers using Shell, Python, and Perl to satisfy audit requirements; coordinated audits and led high-severity incident response and root-cause analysis.</li>
               <li><strong>Directory-usage portal:</strong> Architected a self-service portal using Angular 9 and Spring Boot microservices, deployed through CI/CD to track directory-services consumption by team.</li>
-            </ul>
+              </ul>
+            </div>
           </div>
         </article>
 
@@ -921,9 +1042,12 @@
         <div class="project-copy">
           <p class="eyebrow">VS Code extension · Open source</p>
           <h3>CubeTrace</h3>
-          <p>Designed and built a VS Code extension (TypeScript, Node.js, DuckDB/Parquet) that constructs a live knowledge graph of a codebase — tagging every file with its architectural layer, feature domain, and keywords, and tracking every import as a directed edge.</p>
-          <p>Exposed language-model tools through the VS Code LM API that let GitHub Copilot pinpoint exactly which files are relevant to a task before reading any source, significantly reducing per-prompt token consumption.</p>
-          <p>Engineered a delta-based incremental sync pipeline — LSP-based import/export extraction, content-hash caching, a debounced on-save file watcher, and git branch-switch reconciliation — keeping the graph continuously current at near-zero cost, with multi-root workspace isolation and automated Copilot-instruction injection; packaged and distributed as a VSIX under Apache 2.0.</p>
+          <p class="project-tagline">Fewer tokens. Lower cost. Smarter Copilot.</p>
+          <ul class="project-points">
+            <li>A free VS Code extension that maps your codebase so AI assistants like GitHub Copilot understand your project.</li>
+            <li><strong>Reads only the files that matter</strong> — far fewer tokens, lower AI costs, and faster, more accurate answers.</li>
+            <li>The map updates automatically as you work. Open source and free for anyone to use.</li>
+          </ul>
           <a class="project-link" href="https://github.com/gtr0ot/cubetrace" target="_blank" rel="noreferrer">VIEW ON GITHUB <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
         </div>
         <figure class="project-visual">
